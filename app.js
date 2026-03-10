@@ -27,12 +27,23 @@ const sections = {
         `
     },
     payment: {
-        title: "Поповнення балансу",
+        title: "Поповнити баланс",
         content: `
-            <div class="payment-options">
-                <button class="pay-btn" onclick="processPayment('stars')">💎 Оплатити Stars</button>
-                <button class="pay-btn" onclick="processPayment('crypto')">⚡ Оплатити Crypto</button>
-                <p style="text-align: center; margin-top: 1rem; opacity: 0.6; font-size: 0.8rem;">Оберіть зручний для вас варіант вище</p>
+            <div style="text-align: center;">
+                <p>Оберіть метод оплати для миттєвого поповнення:</p>
+                <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem;">
+                    <button class="pay-btn" onclick="openTelegramStars()">💎 Оплатити Stars</button>
+                    <button class="pay-btn" onclick="openCryptoPay()">⚡ Оплатити Crypto</button>
+                </div>
+            </div>
+        `
+    },
+    withdraw: {
+        title: "Вивести кошти",
+        content: `
+            <div style="text-align: center;">
+                <p>Бажаєте вивести кошти? Напишіть нашому менеджеру суму та ваші реквізити.</p>
+                <button class="pay-btn" style="margin-top: 1.5rem;" onclick="window.open('https://t.me/username_support', '_blank')">💬 Запит на виведення</button>
             </div>
         `
     },
@@ -44,6 +55,15 @@ const sections = {
                 <p>2. Натисніть 'Купити' та оберіть P2P або карту.</p>
                 <p>3. Оберіть USDT або TON.</p>
                 <p>4. Тепер ви можете поповнити баланс VISAVI в один клік.</p>
+            </div>
+        `
+    },
+    support: {
+        title: "Підтримка",
+        content: `
+            <div style="text-align: center;">
+                <p>Маєте питання? Ми з радістю допоможемо вам у Telegram!</p>
+                <button class="pay-btn" style="margin-top: 1.5rem;" onclick="window.open('https://t.me/username_support', '_blank')">💬 Написати менеджеру</button>
             </div>
         `
     }
