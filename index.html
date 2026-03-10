@@ -3,326 +3,63 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Преміальний Nail-сервіс | Ідеальний манікюр за 60 хвилин</title>
-    <meta name="description" content="Nail-салон преміум-класу. Ідеальний манікюр без очікування. Запишіться онлайн.">
-
-    <!-- Fonts: Inter for clean UI text, Playfair Display for elegant headings -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VISAVI Premium</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap"
         rel="stylesheet">
-
-    <!-- Icons (Lucide via unpkg) -->
     <script src="https://unpkg.com/lucide@latest"></script>
-
-    <link rel="stylesheet" href="style.css?v=8">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <div class="app-container">
+        <!-- Background Layer -->
+        <div class="background-overlay"></div>
 
-    <!-- Header / Nav -->
-    <header class="navbar">
-        <div class="container nav-content">
-            <div class="logo">MILOU<span>.</span></div>
-            <nav class="desktop-nav">
-                <a href="#services">Послуги</a>
-                <a href="#portfolio">Роботи</a>
-                <a href="#reviews">Відгуки</a>
-                <a href="#pricing">Ціни</a>
-            </nav>
-            <a href="#booking" class="btn btn-outline nav-booking-btn">
-                <span>Записатися</span>
-                <i data-lucide="calendar"></i>
-            </a>
+        <header class="app-header">
+            <img src="assets/logo.jpg" alt="VISAVI Logo" class="main-logo">
+            <h1 class="premium-title">VISAVI</h1>
+        </header>
+
+        <main class="menu-grid">
+            <button class="menu-item" onclick="openSection('register')">
+                <i data-lucide="user-plus"></i>
+                <span>Як зареєструватись?</span>
+            </button>
+            <button class="menu-item" onclick="openSection('sit')">
+                <i data-lucide="layout-grid"></i>
+                <span>Як сісти за стіл VISAVI?</span>
+            </button>
+            <button class="menu-item highlight" onclick="openSection('payment')">
+                <i data-lucide="credit-card"></i>
+                <span>Поповнити баланс</span>
+            </button>
+            <button class="menu-item" onclick="openSection('guide')">
+                <i data-lucide="wallet"></i>
+                <span>Інструкція з криптогаманця</span>
+            </button>
+        </main>
+
+        <!-- Overlay Sections -->
+        <div id="modal-container" class="modal-container hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modal-title">Назва розділу</h2>
+                    <button class="close-btn" onclick="closeModal()">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+                <div id="modal-body" class="modal-body">
+                    <!-- Content injected via JS -->
+                </div>
+            </div>
         </div>
-    </header>
-
-    <!-- Mobile Sticky Book Button -->
-    <div class="mobile-sticky-btn">
-        <a href="#booking" class="btn btn-primary w-full shadow-lg">Онлайн Запис</a>
     </div>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
-        <div class="hero-bg"></div>
-        <div class="container hero-content">
-            <div class="hero-text-box">
-                <div class="trust-badge">
-                    <div class="stars-row">
-                        <i data-lucide="star" fill="currentColor"></i>
-                        <i data-lucide="star" fill="currentColor"></i>
-                        <i data-lucide="star" fill="currentColor"></i>
-                        <i data-lucide="star" fill="currentColor"></i>
-                        <i data-lucide="star" fill="currentColor"></i>
-                    </div>
-                    <span>500+ задоволених клієнтів</span>
-                </div>
-                <h1>Ідеальний манікюр за 60 хвилин</h1>
-                <p>Преміальний nail-сервіс без очікування. Бездоганна якість, стерильність та атмосфера релаксу.</p>
-                <div class="hero-cta">
-                    <a href="#booking" class="btn btn-primary btn-large">Записатися зараз</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="section services-section">
-        <div class="container">
-            <div class="section-title text-center">
-                <h2>Наші послуги</h2>
-                <p>Бездоганні результати від експертів своєї справи. Ми використовуємо тільки преміальні матеріали.</p>
-            </div>
-
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon"><i data-lucide="sparkles"></i></div>
-                    <h3>Манікюр</h3>
-                    <p>Класичний, апаратний та комбінований манікюр з ідеальним покриттям під кутикулу.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i data-lucide="footprints"></i></div>
-                    <h3>Педикюр</h3>
-                    <p>SPA-догляд, смарт-педикюр та глибоке зволоження для ідеальної гладкості та краси.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i data-lucide="scissors"></i></div>
-                    <h3>Нарощування</h3>
-                    <p>Міцні та витончені нігті бажаної форми та довжини з використанням сучасних гелів.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i data-lucide="palette"></i></div>
-                    <h3>Nail Art</h3>
-                    <p>Від френча та мінімалізму до складних авторських дизайнів та художнього розпису.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="section portfolio-section">
-        <div class="container">
-            <div class="section-title text-center">
-                <h2>Наші роботи</h2>
-                <p>Галерея бездоганних перетворень. Надихайтеся та обирайте свій стиль.</p>
-            </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-item"><img src="assets/img/p1.png" alt="Манікюр 1">
-                    <div class="overlay"><span>Nude Essence</span></div>
-                </div>
-                <div class="portfolio-item"><img src="assets/img/p2.png" alt="Манікюр 2">
-                    <div class="overlay"><span>Modern French</span></div>
-                </div>
-                <div class="portfolio-item"><img src="assets/img/p3.png" alt="Манікюр 3">
-                    <div class="overlay"><span>Deep Velvet</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section about-section">
-        <div class="container about-grid">
-            <div class="about-image">
-                <img src="assets/img/about.png" alt="Інтер'єр салону">
-            </div>
-            <div class="about-content">
-                <h2>ПРО НАС</h2>
-                <p>MILOU — це простір краси, де кожен візит перетворюється на ритуал турботи про себе. Ми віримо в
-                    естетику деталей та бездоганну якість.</p>
-                <ul class="about-features">
-                    <li><i data-lucide="check-circle"></i> 100% стерильність (СанПіН)</li>
-                    <li><i data-lucide="check-circle"></i> Сертифіковані топ-майстри</li>
-                    <li><i data-lucide="check-circle"></i> Преміальні матеріали (Luxio, Fedua)</li>
-                    <li><i data-lucide="check-circle"></i> Затишна атмосфера та свіжа кава</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Reviews Section -->
-    <section id="reviews" class="section reviews-section">
-        <div class="container">
-            <div class="section-title text-center">
-                <h2>Відгуки клієнтів</h2>
-                <p>Ваша довіра — наша головна нагорода.</p>
-            </div>
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <div class="stars"><i data-lucide="star" fill="currentColor"></i><i data-lucide="star"
-                            fill="currentColor"></i><i data-lucide="star" fill="currentColor"></i><i data-lucide="star"
-                            fill="currentColor"></i><i data-lucide="star" fill="currentColor"></i></div>
-                    <p>"Найкращий манікюр у моєму житті! Дуже швидко, акуратно і носиться цілий місяць без сколів."</p>
-                    <div class="review-author">— Анна М.</div>
-                </div>
-                <div class="review-card">
-                    <div class="stars"><i data-lucide="star" fill="currentColor"></i><i data-lucide="star"
-                            fill="currentColor"></i><i data-lucide="star" fill="currentColor"></i><i data-lucide="star"
-                            fill="currentColor"></i><i data-lucide="star" fill="currentColor"></i></div>
-                    <p>"У салоні дуже красиво і затишно. Майстер прислухалася до всіх побажань. Повернуся обов'язково!"
-                    </p>
-                    <div class="review-author">— Марія С.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="section pricing-section">
-        <div class="container">
-            <div class="section-title text-center">
-                <h2>Прайс-лист</h2>
-                <p>Прозорі ціни на всі види послуг.</p>
-            </div>
-            <div class="price-grid">
-                <div class="price-item"><span>Манікюр з покриттям</span><span>3500 ₴</span></div>
-                <div class="price-item"><span>Педикюр (повний)</span><span>4500 ₴</span></div>
-                <div class="price-item"><span>Нарощування нігтів</span><span>5500 ₴</span></div>
-                <div class="price-item"><span>Дизайн (1 ніготь)</span><span>від 100 ₴</span></div>
-                <div class="price-item"><span>Зняття чужого покриття</span><span>500 ₴</span></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Booking Section (Dynamic Calendar) -->
-    <section id="booking" class="section booking-section">
-        <div class="container">
-            <div class="booking-container">
-                <div class="section-title text-center">
-                    <h2>Записатися онлайн</h2>
-                    <p>Оберіть зручний час всього за кілька кроків</p>
-                </div>
-
-                <!-- Step Indicator -->
-                <div class="stepper">
-                    <div class="step active" data-step="1"><span>1</span>
-                        <p>Послуга</p>
-                    </div>
-                    <div class="step" data-step="2"><span>2</span>
-                        <p>Дата</p>
-                    </div>
-                    <div class="step" data-step="3"><span>3</span>
-                        <p>Час</p>
-                    </div>
-                    <div class="step" data-step="4"><span>4</span>
-                        <p>Контакти</p>
-                    </div>
-                </div>
-
-                <div class="booking-card">
-                    <!-- Step 1: Service Selection -->
-                    <div class="booking-step active" id="step1">
-                        <div class="services-list">
-                            <div class="service-option" data-id="manicure" data-price="3500" data-duration="60">
-                                <div class="service-info">
-                                    <h3>Манікюр</h3>
-                                    <span>60 хв • 3500 ₴</span>
-                                </div>
-                                <i data-lucide="chevron-right"></i>
-                            </div>
-                            <div class="service-option" data-id="pedicure" data-price="4500" data-duration="90">
-                                <div class="service-info">
-                                    <h3>Педикюр</h3>
-                                    <span>90 хв • 4500 ₴</span>
-                                </div>
-                                <i data-lucide="chevron-right"></i>
-                            </div>
-                            <div class="service-option" data-id="gel-polish" data-price="3000" data-duration="60">
-                                <div class="service-info">
-                                    <h3>Покриття гель-лаком</h3>
-                                    <span>60 хв • 3000 ₴</span>
-                                </div>
-                                <i data-lucide="chevron-right"></i>
-                            </div>
-                            <div class="service-option" data-id="extensions" data-price="5500" data-duration="120">
-                                <div class="service-info">
-                                    <h3>Нарощування нігтів</h3>
-                                    <span>120 хв • 5500 ₴</span>
-                                </div>
-                                <i data-lucide="chevron-right"></i>
-                            </div>
-                            <div class="service-option" data-id="art" data-price="200" data-duration="30">
-                                <div class="service-info">
-                                    <h3>Дизайн нігтів</h3>
-                                    <span>від 30 хв • від 200 ₴</span>
-                                </div>
-                                <i data-lucide="chevron-right"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Step 2: Date Selection -->
-                    <div class="booking-step" id="step2">
-                        <div class="calendar-wrapper">
-                            <div class="calendar-header">
-                                <button id="prevMonth"><i data-lucide="chevron-left"></i></button>
-                                <h3 id="currentMonth">Березень 2026</h3>
-                                <button id="nextMonth"><i data-lucide="chevron-right"></i></button>
-                            </div>
-                            <div class="calendar-grid" id="calendarGrid">
-                                <!-- Days will be injected by JS -->
-                            </div>
-                        </div>
-                        <div class="step-nav">
-                            <button class="btn btn-outline back-btn">Назад</button>
-                        </div>
-                    </div>
-
-                    <!-- Step 3: Time Selection -->
-                    <div class="booking-step" id="step3">
-                        <div class="time-slots-grid" id="timeSlotsGrid">
-                            <!-- Slots will be injected by JS -->
-                        </div>
-                        <div class="step-nav">
-                            <button class="btn btn-outline back-btn">Назад</button>
-                        </div>
-                    </div>
-
-                    <!-- Step 4: Contact Form -->
-                    <div class="booking-step" id="step4">
-                        <form id="finalBookingForm" class="booking-form">
-                            <div class="booking-summary" id="bookingSummary">
-                                <!-- Summary will be injected by JS -->
-                            </div>
-                            <div class="form-group"><input type="text" id="custName" placeholder="Ваше ім'я" required>
-                            </div>
-                            <div class="form-group"><input type="tel" id="custPhone" placeholder="Номер телефону"
-                                    required></div>
-                            <div class="form-group"><textarea id="custComment"
-                                    placeholder="Коментар (необов'язково)"></textarea></div>
-                            <button type="submit" class="btn btn-primary w-full">Підтвердити запис</button>
-                        </form>
-                        <div class="step-nav">
-                            <button class="btn btn-outline back-btn">Назад</button>
-                        </div>
-                    </div>
-
-                    <!-- Success Message -->
-                    <div class="booking-step" id="stepSuccess">
-                        <div class="success-content text-center">
-                            <div class="success-icon"><i data-lucide="check-circle"></i></div>
-                            <h2>Запис підтверджено!</h2>
-                            <p>Ми зв'яжемося з вами найближчим часом для підтвердження деталей.</p>
-                            <button class="btn btn-primary" onclick="location.reload()">На головну</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container text-center">
-            <div class="logo">MILOU<span>.</span></div>
-            <p>&copy; 2026 MILOU Nail Studio. Всі права захищені.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+    <script src="app.js"></script>
     <script>
-        // Initialize Lucide icons
         lucide.createIcons();
     </script>
 </body>
